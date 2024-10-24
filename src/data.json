@@ -2,21 +2,21 @@
   {
     "category": "Reaction",
     "score": 80,
-    "icon": "./assets/images/icon-reaction.svg"
+    "icon": "https://raw.githubusercontent.com/MrSeager/results-summary/refs/heads/main/src/assets/images/icon-reaction.svg"
   },
   {
     "category": "Memory",
     "score": 92,
-    "icon": "./assets/images/icon-memory.svg"
+    "icon": "https://raw.githubusercontent.com/MrSeager/results-summary/refs/heads/main/src/assets/images/icon-memory.svg"
   },
   {
     "category": "Verbal",
     "score": 61,
-    "icon": "./assets/images/icon-verbal.svg"
+    "icon": "https://github.com/MrSeager/results-summary/blob/main/src/assets/images/icon-verbal.svg"
   },
   {
     "category": "Visual",
     "score": 72,
-    "icon": "./assets/images/icon-visual.svg"
+    "icon": "https://raw.githubusercontent.com/MrSeager/results-summary/refs/heads/main/src/assets/images/icon-visual.svg"
   }
 ]
