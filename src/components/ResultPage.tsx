@@ -3,6 +3,7 @@ import React, { FC, useState, useEffect } from 'react';
 import './resultPage.css';
 import ResultBar from './ResultBar.tsx';
 import AnimatedNumber from './AnimatedNumber.tsx';
+import AnimationText from './AnimationText.tsx';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col, Button } from 'react-bootstrap';
@@ -21,6 +22,14 @@ interface DataLinesProps {
 const ResultPage: FC = () => {
     const [dataProps, setDataProps] = useState<DataLinesProps[]>([]);
 
+    const lineProps = {
+        head_1: 'Your Result',
+        head_2: 'Great',
+        par_num: 'of 100',
+        par_1: "You scored higher than 65% of the people who have taken these tests.",
+        head_3: 'Summary'
+    }
+
     useEffect(() => {
         axios.get('https://raw.githubusercontent.com/MrSeager/results-summary/refs/heads/main/src/data.json')
       .then((response) => {
@@ -32,20 +41,20 @@ const ResultPage: FC = () => {
 
     return (
         <Container fluid className='d-flex flex-column align-items-center justify-content-center min-vh-100 px-0 py-3 overflow-hidden'>
-            <Container fluid data-aos="fade-down" className='shadow rounded-4 cs-w'>
-                <Row>
-                    <Col data-aos="fade-right" data-aos-delay="300" lg={6} xs={12} className='rounded-4 cs-bg-blue-gradient d-flex flex-column align-items-center gap-3 text-white text-center p-4'>
-                        <h1 className='h5 cs-tc-light-blue'>Your Result</h1>
+            <Container fluid data-aos="fade-down" className='shadow rounded-4 cs-w cs-h'>
+                <Row className='h-100'>
+                    <Col data-aos="fade-right" data-aos-delay="300" lg={6} xs={12} className='rounded-4 cs-bg-blue-gradient d-flex flex-column align-items-center justify-content-between gap-3 text-white text-center p-4'>
+                        <h1 className='h5 cs-tc-light-blue'><AnimationText text={lineProps.head_1} duration={100} delay={1000} /></h1>
                         <Container className='cs-ratio rounded-circle cs-bg-blue-gradient-2 w-75 d-flex flex-column align-items-center justify-content-center'>
-                            <h2 className='display-1 cs-fw-800 p-0 m-0'><AnimatedNumber target={76} duration={1000} delay={500} /></h2>
-                            <p className='m-0 p-0 cs-tc-light-blue'>of 100</p>
+                            <h2 className='display-1 cs-fw-800 p-0 m-0'><AnimatedNumber target={76} duration={1000} delay={1000} /></h2>
+                            <p className='m-0 p-0 cs-tc-light-blue'><AnimationText text={lineProps.par_num} duration={100} delay={1000} /></p>
                         </Container>
-                        <h2 className='cs-fw-700'>Great</h2>
-                        <p className='cs-tc-light-blue'>You scored higher than 65% of the people who have taken these tests.</p>
+                        <h2 className='cs-fw-700 m-0'><AnimationText text={lineProps.head_2} duration={100} delay={1500} /></h2>
+                        <p className='cs-tc-light-blue'><AnimationText text={lineProps.par_1} duration={300} delay={2000} /></p>
                     </Col>
                     {dataProps.length > 0 ? (
                         <Col data-aos="fade-left" data-aos-delay="300" lg={6} xs={12} className='d-flex flex-column justify-content-around py-3 px-4 gap-3'>
-                            <h2>Summary</h2>
+                            <h2 className='cs-fw-700 cs-tc-dark-blue'>{lineProps.head_3}</h2>
                             <ResultBar
                                 nameType='reaction'
                                 imgLogo={dataProps[0].icon}
